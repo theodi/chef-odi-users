@@ -1,0 +1,24 @@
+---
+driver:
+  name: docker
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-14.04
+
+suites:
+  - name: default
+    run_list:
+      - recipe[odi-users::default]
+    attributes:
+      user: 'taylorswift'
+
+  - name: multiple_users
+    run_list:
+      - recipe[odi-users::default]
+    attributes:
+      users:
+        - 'derek'
+        - 'clive'
